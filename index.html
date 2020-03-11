@@ -14,7 +14,97 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 class="text-center">Confident Bank Bangladesh</h1>
+    <div id="login-area">
+      <h1 class="text-center">Confident Bank Bangladesh</h1>
+      <div class="submit-area">
+        <h4>Login</h4>
+        <input class="form-control" type="text" placeholder="Enter Email" />
+        <input
+          class="form-control"
+          type="password"
+          placeholder="Enter Password"
+          name=""
+          id=""
+        />
+        <br />
+        <button id="login" class="btn btn-success" type="submit">Enter</button>
+      </div>
+    </div>
+    <div id="transaction-area">
+      <div class="row ">
+        <div class="col-md-4">
+          <div class="deposit status">
+            <h5>Deposit</h5>
+            <h2>$ <span id="currentDeposit">00</span></h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="withdraw status">
+            <h5>Withdraw</h5>
+            <h2>$00</h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="balance status">
+            <h5>balance</h5>
+            <h2>$1240</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Deposit</h4>
+            <input
+              id="depositamount"
+              class="form-control"
+              placeholder="Enter Amount"
+              type="text"
+            />
+            <br />
+            <button id="adddeposit" class="btn btn-success">Deposit</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Withdraw</h4>
+            <input
+              class="form-control"
+              placeholder="Enter Amount"
+              type="text"
+            />
+            <br />
+            <button id="withdraw" class="btn btn-success">Withdraw</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //Login button event handler
+      const loginBtn = document.getElementById("login");
+      loginBtn.addEventListener("click", function() {
+        const loginarea = document.getElementById("login-area");
+        loginarea.style.display = "none";
+        const transactionarea = document.getElementById("transaction-area");
+        transactionarea.style.display = "block";
+      });
+
+      //Deposit button event handler
+      const depositbtn = document.getElementById("adddeposit");
+      depositbtn.addEventListener("click", function() {
+        const depositamount = document.getElementById("depositamount").value;
+        const depositNumber = parseFloat(depositamount);
+
+        const currentdeposit = document.getElementById("currentDeposit")
+          .innerText;
+        const currentdepositnumber = parseFloat(currentdeposit);
+        const totaldeposit = depositNumber + currentdepositnumber;
+        document.getElementById("currentDeposit").innerText = totaldeposit;
+        document.getElementById("depositamount").value = "";
+      });
+    </script>
+
     <!--Boostrap Javascript-->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
